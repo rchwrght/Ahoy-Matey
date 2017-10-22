@@ -8,10 +8,11 @@ public class MyPlayerController : NetworkBehaviour {
     public float playerSpeed = 2;
 
     private Vector3 inputValue;
+    private Camera camera;
     
     // Use this for initialization 
 	void Start () {
-
+        
 	}
 	
 	// Update is called once per frame
@@ -25,5 +26,10 @@ public class MyPlayerController : NetworkBehaviour {
         inputValue.z = Input.GetAxis("Vertical");
 
         transform.Translate(inputValue);
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        GetComponentInChildren<Camera>().enabled = true;
     }
 }
